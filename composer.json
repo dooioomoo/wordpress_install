@@ -1,5 +1,5 @@
 {
-  "name": "dooioomoo/wp_setup",
+  "name": "dooioomoo/wordpress_install",
   "description": "install project for WordPress stack via Composer",
   "authors": [
     {
