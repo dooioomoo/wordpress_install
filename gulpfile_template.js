@@ -25,6 +25,7 @@ const del = require("del");
 const rename = require("gulp-rename");
 /** == Minify PNG, JPEG, GIF and SVG images with imagemin : npm install --save-dev gulp-imagemin */
 const imagemin = require("gulp-imagemin");
+const minify = require("gulp-minify");
 /** == Only pass through newer source files : npm install gulp-newer --save-dev */
 const newer = require("gulp-newer");
 /** == Prevent pipe breaking caused by errors from gulp plugins */
@@ -48,21 +49,22 @@ var siteDir = './',
     csopDir = asseDir + 'css/',
     jsopDir = asseDir + 'js/',
     sassDir = asseDir + 'sass/',
-    ignoreFile = [sassDir + 'custom.scss',sassDir + 'admin.scss'],
+    ignoreFile = [sassDir + 'custom.scss', sassDir + 'admin.scss'],
     sassfile = [],
     ignoreFilePlug = '';
 
 //ignoreFile2 = '!' + sassDir + 'admin.scss';
 
 /************************************************************************************/
-function createignoreFileList(){
+function createignoreFileList() {
     sassfile = [sassDir + '*.scss'];
-    for (var i in ignoreFile){
-        ignoreFilePlug = '!'+ignoreFile[i];
+    for (var i in ignoreFile) {
+        ignoreFilePlug = '!' + ignoreFile[i];
         sassfile.push(ignoreFilePlug);
     }
     console.log(sassfile);
 }
+
 // BrowserSync
 function browserSync(done) {
     browsersync.init({
@@ -82,7 +84,7 @@ function browserSyncReload(done) {
 
 // Clean assets
 function clean() {
-    return del([sassDir +csopDir]);
+    return del([sassDir + csopDir]);
 }
 
 // Optimize Images
@@ -92,9 +94,9 @@ function images() {
         .pipe(newer(imgsDir))
         .pipe(
             imagemin([
-                imagemin.gifsicle({ interlaced: true }),
-                imagemin.jpegtran({ progressive: true }),
-                imagemin.optipng({ optimizationLevel: 5 }),
+                imagemin.gifsicle({interlaced: true}),
+                imagemin.jpegtran({progressive: true}),
+                imagemin.optipng({optimizationLevel: 5}),
                 imagemin.svgo({
                     plugins: [
                         {
@@ -113,25 +115,25 @@ function css() {
     return gulp
         .src(sassfile)
         .pipe(plumber())
-        .pipe(sass({ outputStyle: "expanded" }))
+        .pipe(sass({outputStyle: "expanded"}))
         .pipe(concat('common.css'))
-        .pipe(gulp.dest(sassDir +csopDir))
-        .pipe(rename({ suffix: ".min" }))
+        .pipe(gulp.dest(sassDir + csopDir))
+        .pipe(rename({suffix: ".min"}))
         .pipe(postcss([autoprefixer(), cssnano()]))
         .pipe(gulp.dest(csopDir));
-        //.pipe(browsersync.stream());
+    //.pipe(browsersync.stream());
 }
 
-function ignoreFilecss(){
+function ignoreFilecss() {
     // var ignoreFileClearn = ignoreFile.replace('!','');
     return gulp
         .src(ignoreFile)
         .pipe(plumber())
-        .pipe(sass({ outputStyle: "expanded" }))
+        .pipe(sass({outputStyle: "expanded"}))
         .pipe(gulp.dest(csopDir))
         .pipe(postcss([cssnano()]))
         .pipe(gulp.dest(csopDir));
-        //.pipe(browsersync.stream());
+    //.pipe(browsersync.stream());
 }
 
 // Transpile, concatenate and minify scripts
@@ -143,8 +145,8 @@ function scripts() {
             // .pipe(webpackstream(webpackconfig, webpack))
             // folder only, filename is specified in webpack config
             .pipe(minify())
-            .pipe(gulp.dest(jsopDir));
-            //.pipe(browsersync.stream())
+            .pipe(gulp.dest(jsopDir))
+        //.pipe(browsersync.stream())
     );
 }
 
@@ -171,15 +173,17 @@ function watchFiles() {
 
 // define complex tasks
 createignoreFileList();
-const js 	= gulp.series(scriptsLint, scripts);
-const build = gulp.series(gulp.parallel(css,ignoreFilecss, images, js,clean));
+const js = gulp.series(scripts);
+const build = gulp.series(gulp.parallel(css, ignoreFilecss, images, js, clean));
+const gulp_default = gulp.series(gulp.parallel(css, ignoreFilecss, js));
 //const watch = gulp.parallel(watchFiles, browserSync);
 
 // export tasks
-exports.images 	= images;
-exports.css 	= css;
-exports.js 		= js;
+// exports.images 	= images;
+exports.css = css;
+exports.js = js;
 // exports.clean 	= clean;
 //exports.build 	= build;
 //exports.watch 	= watch;
-exports.default = build;
+// exports.default = build;
+exports.default = gulp_default;
