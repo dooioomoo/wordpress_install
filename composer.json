@@ -46,6 +46,6 @@
     "wpackagist-plugin/wps-hide-login": "^1.5",
     "wpackagist-plugin/widget-css-classes": "^1.5.3",
     "wpackagist-theme/twentyseventeen": "^1.4",
-    "dooioomoo/clayball": ">=1.0"
+    "dooioomoo/clayball": "^1.57"
   }
 }
