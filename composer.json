@@ -42,7 +42,7 @@
     "wpackagist-plugin/wp-fastest-cache": ">0.8.8.8",
     "wpackagist-plugin/all-in-one-wp-migration": ">6.81",
     "wpackagist-plugin/contact-form-7": ">5.1",
-    "wpackagist-plugin/breadcrumb-navxt": ">6.3.0",
+    "wpackagist-plugin/breadcrumb-navxt": "^6.3.0",
     "wpackagist-plugin/wps-hide-login": ">1.5",
     "wpackagist-plugin/widget-css-classes": ">1.5.3",
     "wpackagist-theme/twentyseventeen": ">1.4",
