@@ -267,5 +267,11 @@
 				<attribute>yt_channel_text</attribute>
 			</attributes>
 		</shortcode>
+		<shortcode>
+			<tag>ultimate_ribbon</tag>
+			<attributes>
+				<attribute>ribbon_msg</attribute>
+			</attributes>
+		</shortcode>
 	</shortcodes>
 </wpml-config>

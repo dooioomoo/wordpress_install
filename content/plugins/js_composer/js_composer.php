@@ -2,8 +2,8 @@
 /**
  * Plugin Name: WPBakery Page Builder
  * Plugin URI: http://wpbakery.com
- * Description: 更多WordPress汉化主题、主题升级、问题咨询请访问：<strong><a href="http://www.4mudi.com">http://www.4mudi.com</a></strong>或者光临<a href="http://wordpresszhuti.taobao.com">四亩地淘宝店</a>
- * Version: 6.0.3
+ * Description: 更多汉化主题、主题升级、问题咨询请访问：<strong><a href="http://www.4mudi.com">http://www.4mudi.com</a></strong>或我的<a href="http://wordpresszhuti.taobao.com">淘宝店</a>
+ * Version: 6.0.5
  * Author: Michael M - WPBakery.com
  * Author URI: http://wpbakery.com
  *
@@ -21,7 +21,7 @@ if ( ! defined( 'WPB_VC_VERSION' ) ) {
 	/**
 	 *
 	 */
-	define( 'WPB_VC_VERSION', '6.0.3' );
+	define( 'WPB_VC_VERSION', '6.0.5' );
 }
 
 $dir = dirname( __FILE__ );

@@ -1,3 +1,13 @@
+3.19.0 - 30 July 2019
+- New: Introducing Dual Color Heading Element.
+- Improvement: Added the Extra class option for the Hotspot item.
+- Improvement: Update WPML XML file for Compatibility.
+- Improvement: Update the string as an Element instead of Modules in backend settings.
+- Fix: PHP Notice of $ub variable is not initialized.
+- Fix: Hotspot glow animation color is not working.
+- Fix: PHP Warning in Team element appearing on the front end.
+- Removed purchase key License activation method as the API for this is now being deprecated by Envato.
+
 3.18.0 - 18 Feb 2019
 - New: Introduce Ribbon element.
 - Improvement: Added the animation option for a marker in Google Map.

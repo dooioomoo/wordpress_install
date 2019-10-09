@@ -4,7 +4,7 @@ Plugin Name: Ultimate Addons for WPBakery Page Builder
 Plugin URI: https://brainstormforce.com/demos/ultimate/
 Author: Brainstorm Force
 Author URI: https://www.brainstormforce.com
-Version: 3.18.0
+Version: 3.19.0
 Description: 更多WordPress汉化主题、主题升级、问题咨询请访问：<strong><a href="http://www.4mudi.com">http://www.4mudi.com</a></strong>或者光临<a href="http://wordpresszhuti.taobao.com">四亩地淘宝店</a>
 Text Domain: ultimate_vc
 License: GPL version 2 or later - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
@@ -14,10 +14,6 @@ License: GPL version 2 or later - http://www.gnu.org/licenses/old-licenses/gpl-2
 
 register_activation_hook( __FILE__, 'on_ultimate_vc_addons_activate' );
 
-/* wplocker nulled */
-$brainstrom = get_option( 'brainstrom_products' );
-$brainstrom['plugins']['6892199']['status'] = 'registered';
-update_option( 'brainstrom_products', $brainstrom );
 function on_ultimate_vc_addons_activate() {
 	update_site_option( 'bsf_force_check_extensions', true );
 }
@@ -27,7 +23,7 @@ if ( ! defined( '__ULTIMATE_ROOT__' ) ) {
 }
 
 if ( ! defined( 'ULTIMATE_VERSION' ) ) {
-	define( 'ULTIMATE_VERSION', '3.18.0' );
+	define( 'ULTIMATE_VERSION', '3.19.0' );
 }
 
 if ( ! defined( 'ULTIMATE_URL' ) ) {
@@ -475,6 +471,7 @@ if ( ! class_exists( 'Ultimate_VC_Addons' ) ) {
 					|| stripos( $post_content, '[ult_range_slider')
 					|| stripos( $post_content, '[ultimate_video')
 					|| stripos( $post_content, '[ultimate_ribbon')
+					|| stripos( $post_content, '[ultimate_dual_color')
 					|| $found_ultimate_backgrounds
 				) {
 				return true;
@@ -815,6 +812,9 @@ if ( ! class_exists( 'Ultimate_VC_Addons' ) ) {
 					if( stripos( $post_content, '[ultimate_ribbon') ) {
 						wp_enqueue_script("ultimate-ribbons-script");
 					}
+					if( stripos( $post_content, '[ultimate_dual_color') ) {
+						wp_enqueue_script("ultimate-dual-colors-script");
+					}
 					if( stripos( $post_content, '[ultimate_carousel') ) {
 						wp_enqueue_script('ult-slick');
 						wp_enqueue_script('ultimate-appear');
@@ -990,6 +990,9 @@ if ( ! class_exists( 'Ultimate_VC_Addons' ) ) {
 					}
 					if( stripos( $post_content, '[ultimate_ribbon') ) {
 						wp_enqueue_style("ultimate-ribbons-style");
+					}
+					if( stripos( $post_content, '[ultimate_dual_color') ) {
+						wp_enqueue_style("ultimate-dual-colors-style");
 					}
 					if( stripos( $post_content, '[ultimate_icons') || stripos( $post_content, '[single_icon')) {
 						wp_enqueue_style('ultimate-animate');
@@ -1195,6 +1198,7 @@ if ( ! class_exists( 'Ultimate_VC_Addons' ) ) {
 				'ultimate_range_slider',
 				'ultimate_videos',
 				'ultimate_ribbons',
+				'ultimate_dual_colors',
 			);
 			$ultimate_modules = get_option('ultimate_modules');
 			if(!$ultimate_modules && !is_array($ultimate_modules)){

@@ -24,7 +24,7 @@
       <div class="smile-settings-wrapper">
         <h2 class="nav-tab-wrapper">
             <a href="<?php echo admin_url('admin.php?page=about-ultimate'.$author_extend); ?>" data-tab="about-ultimate" class="nav-tab"> <?php echo __('About','ultimate_vc'); ?> </a>
-	    	<a href="<?php echo admin_url('admin.php?page=ultimate-dashboard'.$author_extend); ?>" data-tab="ultimate-modules" class="nav-tab"> <?php echo __('Modules','ultimate_vc'); ?> </a>
+	    	<a href="<?php echo admin_url('admin.php?page=ultimate-dashboard'.$author_extend); ?>" data-tab="ultimate-modules" class="nav-tab"> <?php echo __('Elements','ultimate_vc'); ?> </a>
 	    	<a href="<?php echo admin_url('admin.php?page=ultimate-smoothscroll'.$author_extend); ?>" data-tab="css-settings" class="nav-tab"> <?php echo __('Smooth Scroll','ultimate_vc'); ?> </a>
 	        <a href="<?php echo admin_url('admin.php?page=ultimate-scripts-and-styles'.$author_extend); ?>" data-tab="css-settings" class="nav-tab"> <?php echo __('Scripts and Styles','ultimate_vc'); ?> </a>
 	        <?php if($author) : ?>
@@ -139,7 +139,7 @@
 										}
 									?>
 			                        <tr valign="top">
-										<th scope="row"><?php echo __("RTL Suport","ultimate_vc"); ?></th>
+										<th scope="row"><?php echo __("RTL Support","ultimate_vc"); ?></th>
 										<td> <div class="onoffswitch" id="ult-rtl-support-row">
 										<input type="checkbox" <?php echo $ultimate_rtl_support; ?> id="ultimate_rtl_support" value="enable" class="onoffswitch-checkbox" name="ultimate_rtl_support" />
 											 <label class="onoffswitch-label" for="ultimate_rtl_support">
@@ -349,14 +349,6 @@
 										), network_admin_url( 'plugins.php' ) );
 
 									?>
-									
-									<tr valign="top" class="ult-theme-support-row-dependant" style="<?php echo $theme_dependant; ?>">
-										<th scope="row"><?php echo __("Activate License using purchase key", "ultimate_vc"); ?></th>
-										<td>
-			                            	<a class="button button-secondarry" href="<?php echo esc_url( $license_form_url ); ?>"><?php echo _e( 'Purchase Key License Form', 'ultimate_vc' )?></a>
-										</td>
-									</tr>
-
 			                    </tbody>
 			              	</table>
 			            </form>
